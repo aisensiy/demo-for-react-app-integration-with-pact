@@ -6,7 +6,7 @@ axios.defaults.adapter = httpAdapter;
 let baseUrl = 'https://jsonplaceholder.typicode.com';
 
 if (process.env.NODE_ENV === 'test') {
-    baseUrl = 'http://example.com';
+    baseUrl = 'http://localhost:8234';
 }
 
 const fetcher = axios.create({

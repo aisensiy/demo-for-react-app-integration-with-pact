@@ -1,0 +1,47 @@
+{
+  "consumer": {
+    "name": "TodoApp"
+  },
+  "provider": {
+    "name": "TodoService"
+  },
+  "interactions": [
+    {
+      "description": "a request for todo list",
+      "provider_state": "Has a list of todos",
+      "request": {
+        "method": "GET",
+        "path": "/todos"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": [
+          {
+            "title": "what to do",
+            "completed": true
+          }
+        ],
+        "matchingRules": {
+          "$.body": {
+            "min": 1
+          },
+          "$.body[*].*": {
+            "match": "type"
+          },
+          "$.body[*].title": {
+            "match": "type"
+          },
+          "$.body[*].completed": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecificationVersion": "2.0.0"
+  }
+}
